@@ -1,129 +1,202 @@
 <!DOCTYPE html><html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>ACCS Terceiro Setor</title>
-        <style>
-            body {
-                  margin: 0;
-                        font-family: Arial, sans-serif;
-                              background: #f5f5f5;
-                                  }header {
-                                    background: #ffffff;
-                                      padding: 15px;
-                                        text-align: center;
-                                          font-weight: bold;
-                                            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-                                            }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACCS Terceiro Setor</title>
+  <style>
+    :root {
+      --pink: #ec4899;
+      --orange: #f97316;
+      --yellow: #facc15;
+      --blue: #2563eb;
+      --bg: #f4f6fb;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --card: #ffffff;
+    }* { box-sizing: border-box; }
 
-                                            main {
-                                              padding: 15px;
-                                                padding-bottom: 70px;
-                                                }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
 
-                                                h1 {
-                                                  font-size: 20px;
-                                                    margin-bottom: 10px;
-                                                    }
+header {
+  background: linear-gradient(135deg, var(--pink), var(--orange), var(--blue));
+  color: white;
+  padding: 20px 15px 25px;
+  text-align: center;
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
 
-                                                    p {
-                                                      color: #555;
-                                                        font-size: 14px;
-                                                        }
+header img {
+  width: 90px;
+  margin-bottom: 8px;
+}
 
-                                                        .card {
-                                                          background: white;
-                                                            padding: 12px;
-                                                              margin-bottom: 10px;
-                                                                border-radius: 12px;
-                                                                  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-                                                                  }
+header h1 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 600;
+}
 
-                                                                  .button {
-                                                                    display: inline-block;
-                                                                      padding: 10px 15px;
-                                                                        background: #007bff;
-                                                                          color: white;
-                                                                            border-radius: 8px;
-                                                                              text-decoration: none;
-                                                                                margin-top: 10px;
-                                                                                }
+main {
+  padding: 16px;
+  padding-bottom: 90px;
+}
 
-                                                                                nav {
-                                                                                  position: fixed;
-                                                                                    bottom: 0;
-                                                                                      width: 100%;
-                                                                                        background: white;
-                                                                                          display: flex;
-                                                                                            justify-content: space-around;
-                                                                                              padding: 10px 0;
-                                                                                                box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-                                                                                                }
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
 
-                                                                                                nav button {
-                                                                                                  background: none;
-                                                                                                    border: none;
-                                                                                                      font-size: 12px;
-                                                                                                      }
+p {
+  color: var(--muted);
+  font-size: 14px;
+}
 
-                                                                                                      .active {
-                                                                                                        color: #007bff;
-                                                                                                          font-weight: bold;
-                                                                                                          }
+.card {
+  background: var(--card);
+  padding: 14px;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+  border-left: 5px solid var(--pink);
+  transition: transform 0.2s ease;
+}
 
-                                                                                                            </style>
-                                                                                                            </head>
-                                                                                                            <body><header>ACCS Terceiro Setor</header><main id="content"></main><nav>
-                                                                                                              <button onclick="setPage('home')" id="btn-home">Início</button>
-                                                                                                                <button onclick="setPage('sobre')" id="btn-sobre">Sobre</button>
-                                                                                                                  <button onclick="setPage('edital')" id="btn-edital">Edital</button>
-                                                                                                                  </nav><script>
-                                                                                                                    function setActive(page) {
-                                                                                                                        document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-                                                                                                                            document.getElementById('btn-' + page).classList.add('active');
-                                                                                                                              }
+.card:nth-child(2) {
+  border-left-color: var(--orange);
+}
 
-                                                                                                                                function setPage(page) {
-                                                                                                                                    const content = document.getElementById('content');
+.card:nth-child(3) {
+  border-left-color: var(--blue);
+}
 
-                                                                                                                                        if (page === 'home') {
-                                                                                                                                              content.innerHTML = `
-                                                                                                                                                      <h1>Página Inicial</h1>
-                                                                                                                                                              <p>Projeto voltado à gestão e prestação de contas para organizações do terceiro setor.</p>
+.card:hover {
+  transform: translateY(-2px);
+}
 
-                                                                                                                                                                      <div class="card">
-                                                                                                                                                                                <strong>Prestação de Contas</strong>
-                                                                                                                                                                                          <p>Transparência é essencial para credibilidade.</p>
-                                                                                                                                                                                                  </div>
+.button {
+  display: inline-block;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, var(--pink), var(--blue));
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-top: 12px;
+  font-size: 14px;
+}
 
-                                                                                                                                                                                                          <div class="card">
-                                                                                                                                                                                                                    <strong>Gestão Financeira</strong>
-                                                                                                                                                                                                                              <p>Controle simples e eficiente para sua organização.</p>
-                                                                                                                                                                                                                                      </div>
-                                                                                                                                                                                                                                            `;
-                                                                                                                                                                                                                                                }
+nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 16px 0;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
 
-                                                                                                                                                                                                                                                    if (page === 'sobre') {
-                                                                                                                                                                                                                                                          content.innerHTML = `
-                                                                                                                                                                                                                                                                  <h1>Sobre</h1>
-                                                                                                                                                                                                                                                                          <p>
-                                                                                                                                                                                                                                                                                    Esta ACCS tem como objetivo orientar organizações do terceiro setor na gestão e prestação de contas, promovendo transparência e eficiência.
-                                                                                                                                                                                                                                                                                            </p>
-                                                                                                                                                                                                                                                                                                  `;
-                                                                                                                                                                                                                                                                                                      }
+nav button {
+  background: none;
+  border: none;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--muted);
+}
 
-                                                                                                                                                                                                                                                                                                          if (page === 'edital') {
-                                                                                                                                                                                                                                                                                                                content.innerHTML = `
-                                                                                                                                                                                                                                                                                                                        <h1>Edital</h1>
-                                                                                                                                                                                                                                                                                                                                <p>Confira os editais disponíveis e participe dos projetos.</p>
-                                                                                                                                                                                                                                                                                                                                        <a href="#" class="button">Baixar Edital</a>
-                                                                                                                                                                                                                                                                                                                                              `;
-                                                                                                                                                                                                                                                                                                                                                  }
+nav button span {
+  font-size: 20px;
+}
 
-                                                                                                                                                                                                                                                                                                                                                      setActive(page);
-                                                                                                                                                                                                                                                                                                                                                        }
+.active {
+  color: var(--pink);
+  font-weight: 600;
+}
 
-                                                                                                                                                                                                                                                                                                                                                          // Página inicial padrão
-                                                                                                                                                                                                                                                                                                                                                            setPage('home');
-                                                                                                                                                                                                                                                                                                                                                            </script></body>
-                                                                                                                                                                                                                                                                                                                                                            </html>
+.disabled {
+  opacity: 0.4;
+}
+
+  </style>
+</head>
+<body><header>
+  <!-- Substitua pelo caminho da sua logo -->
+  <img src="logo.png" alt="Logo ACCS" />
+  <h1>ACCS - Gestão e Prestação de Contas</h1>
+</header><main id="content"></main><nav>
+  <button onclick="setPage('home')" id="btn-home">
+    <span>🏠</span>
+    Início
+  </button>
+  <button onclick="setPage('sobre')" id="btn-sobre">
+    <span>ℹ️</span>
+    Sobre
+  </button>
+  <button onclick="setPage('edital')" id="btn-edital">
+    <span>📄</span>
+    Edital
+  </button>
+  <button class="disabled">
+    <span>🔒</span>
+    Login
+  </button>
+</nav><script>
+  function setActive(page) {
+    document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+    const activeBtn = document.getElementById('btn-' + page);
+    if (activeBtn) activeBtn.classList.add('active');
+  }
+
+  function setPage(page) {
+    const content = document.getElementById('content');
+
+    if (page === 'home') {
+      content.innerHTML = `
+        <h2>Bem-vindo 👋</h2>
+        <p>Plataforma de apoio à gestão e prestação de contas no terceiro setor.</p>
+
+        <div class="card">
+          <strong>📊 Prestação de Contas</strong>
+          <p>Mais transparência e confiança institucional.</p>
+        </div>
+
+        <div class="card">
+          <strong>💰 Gestão Financeira</strong>
+          <p>Controle eficiente de recursos e relatórios.</p>
+        </div>
+      `;
+    }
+
+    if (page === 'sobre') {
+      content.innerHTML = `
+        <h2>Sobre</h2>
+        <p>
+          A ACCS tem como objetivo fortalecer a gestão e a prestação de contas no terceiro setor, promovendo transparência e impacto social.
+        </p>
+      `;
+    }
+
+    if (page === 'edital') {
+      content.innerHTML = `
+        <h2>Edital</h2>
+        <p>Confira os editais disponíveis e participe.</p>
+        <a href="#" class="button">Baixar Edital</a>
+      `;
+    }
+
+    setActive(page);
+  }
+
+  setPage('home');
+</script></body>
+</html>

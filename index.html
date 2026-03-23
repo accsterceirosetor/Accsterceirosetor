@@ -1,65 +1,129 @@
-import { useState } from "react"; import { Card, CardContent } from "@/components/ui/card"; import { Button } from "@/components/ui/button"; import { motion } from "framer-motion";
+                 ); }<!DOCTYPE html><html lang="pt-BR">
+                        <head>
+                          <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                              <title>ACCS Terceiro Setor</title>
+                                <style>
+                                    body {
+                                          margin: 0;
+                                                font-family: Arial, sans-serif;
+                                                      background: #f5f5f5;
+                                                          }header {
+                                                            background: #ffffff;
+                                                              padding: 15px;
+                                                                text-align: center;
+                                                                  font-weight: bold;
+                                                                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                                                                    }
 
-export default function BlogACCSMobile() { const [page, setPage] = useState("home");
+                                                                    main {
+                                                                      padding: 15px;
+                                                                        padding-bottom: 70px;
+                                                                        }
 
-const posts = [ { title: "Importância da Prestação de Contas", excerpt: "A transparência fortalece a confiança nas organizações.", }, { title: "Gestão Financeira Básica", excerpt: "Controle simples para melhorar resultados.", }, ];
+                                                                        h1 {
+                                                                          font-size: 20px;
+                                                                            margin-bottom: 10px;
+                                                                            }
 
-return ( <div className="min-h-screen bg-gray-50 flex flex-col"> {/* Header */} <header className="p-4 bg-white shadow-md text-center font-bold text-lg"> ACCS Terceiro Setor </header>
+                                                                            p {
+                                                                              color: #555;
+                                                                                font-size: 14px;
+                                                                                }
 
-{/* Content */}
-  <main className="flex-1 p-4">
-      {page === "home" && (
-            <div>
-                    <h1 className="text-2xl font-semibold mb-4">Página Inicial</h1>
-                            <p className="text-gray-600 mb-6">
-                                      Este projeto tem como objetivo auxiliar organizações do terceiro setor na gestão e prestação de contas.
-                                              </p>
+                                                                                .card {
+                                                                                  background: white;
+                                                                                    padding: 12px;
+                                                                                      margin-bottom: 10px;
+                                                                                        border-radius: 12px;
+                                                                                          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                                                                                          }
 
-                                                      <div className="space-y-4">
-                                                                {posts.map((post, index) => (
-                                                                            <motion.div
-                                                                                          key={index}
-                                                                                                        initial={{ opacity: 0, y: 10 }}
-                                                                                                                      animate={{ opacity: 1, y: 0 }}
-                                                                                                                                  >
-                                                                                                                                                <Card className="rounded-2xl shadow">
-                                                                                                                                                                <CardContent className="p-4">
-                                                                                                                                                                                  <h2 className="font-semibold">{post.title}</h2>
-                                                                                                                                                                                                    <p className="text-gray-600 text-sm">{post.excerpt}</p>
-                                                                                                                                                                                                                    </CardContent>
-                                                                                                                                                                                                                                  </Card>
-                                                                                                                                                                                                                                              </motion.div>
-                                                                                                                                                                                                                                                        ))}
-                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                      </div>
-                                                                                                                                                                                                                                                                          )}
+                                                                                          .button {
+                                                                                            display: inline-block;
+                                                                                              padding: 10px 15px;
+                                                                                                background: #007bff;
+                                                                                                  color: white;
+                                                                                                    border-radius: 8px;
+                                                                                                      text-decoration: none;
+                                                                                                        margin-top: 10px;
+                                                                                                        }
 
-                                                                                                                                                                                                                                                                              {page === "sobre" && (
-                                                                                                                                                                                                                                                                                    <div>
-                                                                                                                                                                                                                                                                                            <h1 className="text-2xl font-semibold mb-4">Sobre</h1>
-                                                                                                                                                                                                                                                                                                    <p className="text-gray-600">
-                                                                                                                                                                                                                                                                                                              A ACCS tem como finalidade promover conhecimento sobre gestão e prestação de contas para organizações do terceiro setor, contribuindo para maior transparência e eficiência.
-                                                                                                                                                                                                                                                                                                                      </p>
-                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                )}
+                                                                                                        nav {
+                                                                                                          position: fixed;
+                                                                                                            bottom: 0;
+                                                                                                              width: 100%;
+                                                                                                                background: white;
+                                                                                                                  display: flex;
+                                                                                                                    justify-content: space-around;
+                                                                                                                      padding: 10px 0;
+                                                                                                                        box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+                                                                                                                        }
 
-                                                                                                                                                                                                                                                                                                                                    {page === "edital" && (
-                                                                                                                                                                                                                                                                                                                                          <div>
-                                                                                                                                                                                                                                                                                                                                                  <h1 className="text-2xl font-semibold mb-4">Edital</h1>
-                                                                                                                                                                                                                                                                                                                                                          <p className="text-gray-600 mb-4">
-                                                                                                                                                                                                                                                                                                                                                                    Aqui você encontra informações sobre editais, critérios de participação e orientações para submissão de projetos.
-                                                                                                                                                                                                                                                                                                                                                                            </p>
-                                                                                                                                                                                                                                                                                                                                                                                    <Button>Baixar Edital</Button>
-                                                                                                                                                                                                                                                                                                                                                                                          </div>
-                                                                                                                                                                                                                                                                                                                                                                                              )}
-                                                                                                                                                                                                                                                                                                                                                                                                </main>
+                                                                                                                        nav button {
+                                                                                                                          background: none;
+                                                                                                                            border: none;
+                                                                                                                              font-size: 12px;
+                                                                                                                              }
 
-                                                                                                                                                                                                                                                                                                                                                                                                  {/* Bottom Navigation */}
-                                                                                                                                                                                                                                                                                                                                                                                                    <nav className="flex justify-around p-3 bg-white shadow-inner">
-                                                                                                                                                                                                                                                                                                                                                                                                        <button onClick={() => setPage("home")} className="text-sm">Início</button>
-                                                                                                                                                                                                                                                                                                                                                                                                            <button onClick={() => setPage("sobre")} className="text-sm">Sobre</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                <button onClick={() => setPage("edital")} className="text-sm">Edital</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                  </nav>
-                                                                                                                                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                              .active {
+                                                                                                                                color: #007bff;
+                                                                                                                                  font-weight: bold;
+                                                                                                                                  }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                  ); }
+                                                                                                                                    </style>
+                                                                                                                                    </head>
+                                                                                                                                    <body><header>ACCS Terceiro Setor</header><main id="content"></main><nav>
+                                                                                                                                      <button onclick="setPage('home')" id="btn-home">Início</button>
+                                                                                                                                        <button onclick="setPage('sobre')" id="btn-sobre">Sobre</button>
+                                                                                                                                          <button onclick="setPage('edital')" id="btn-edital">Edital</button>
+                                                                                                                                          </nav><script>
+                                                                                                                                            function setActive(page) {
+                                                                                                                                                document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+                                                                                                                                                    document.getElementById('btn-' + page).classList.add('active');
+                                                                                                                                                      }
+
+                                                                                                                                                        function setPage(page) {
+                                                                                                                                                            const content = document.getElementById('content');
+
+                                                                                                                                                                if (page === 'home') {
+                                                                                                                                                                      content.innerHTML = `
+                                                                                                                                                                              <h1>Página Inicial</h1>
+                                                                                                                                                                                      <p>Projeto voltado à gestão e prestação de contas para organizações do terceiro setor.</p>
+
+                                                                                                                                                                                              <div class="card">
+                                                                                                                                                                                                        <strong>Prestação de Contas</strong>
+                                                                                                                                                                                                                  <p>Transparência é essencial para credibilidade.</p>
+                                                                                                                                                                                                                          </div>
+
+                                                                                                                                                                                                                                  <div class="card">
+                                                                                                                                                                                                                                            <strong>Gestão Financeira</strong>
+                                                                                                                                                                                                                                                      <p>Controle simples e eficiente para sua organização.</p>
+                                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                                    `;
+                                                                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                                                                            if (page === 'sobre') {
+                                                                                                                                                                                                                                                                                  content.innerHTML = `
+                                                                                                                                                                                                                                                                                          <h1>Sobre</h1>
+                                                                                                                                                                                                                                                                                                  <p>
+                                                                                                                                                                                                                                                                                                            Esta ACCS tem como objetivo orientar organizações do terceiro setor na gestão e prestação de contas, promovendo transparência e eficiência.
+                                                                                                                                                                                                                                                                                                                    </p>
+                                                                                                                                                                                                                                                                                                                          `;
+                                                                                                                                                                                                                                                                                                                              }
+
+                                                                                                                                                                                                                                                                                                                                  if (page === 'edital') {
+                                                                                                                                                                                                                                                                                                                                        content.innerHTML = `
+                                                                                                                                                                                                                                                                                                                                                <h1>Edital</h1>
+                                                                                                                                                                                                                                                                                                                                                        <p>Confira os editais disponíveis e participe dos projetos.</p>
+                                                                                                                                                                                                                                                                                                                                                                <a href="#" class="button">Baixar Edital</a>
+                                                                                                                                                                                                                                                                                                                                                                      `;
+                                                                                                                                                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                                                                                                                                                              setActive(page);
+                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                  // Página inicial padrão
+                                                                                                                                                                                                                                                                                                                                                                                    setPage('home');
+                                                                                                                                                                                                                                                                                                                                                                                    </script></body>
+                                                                                                                                                                                                                                                                                                                                                                                    </html>

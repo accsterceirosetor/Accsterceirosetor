@@ -1,198 +1,254 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ACCS Terceiro Setor</title>
-  <style>
-    :root {
-      --pink: #ec4899;
-      --orange: #f97316;
-      --yellow: #facc15;
-      --blue: #2563eb;
-      --bg: #f4f6fb;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --card: #ffffff;
-    }* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-}
-
-header {
-  background: linear-gradient(135deg, var(--pink), var(--orange), var(--blue));
-  color: white;
-  padding: 20px 15px 25px;
-  text-align: center;
-  border-bottom-left-radius: 22px;
-  border-bottom-right-radius: 22px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-header img {
-  width: 90px;
-  margin-bottom: 8px;
-}
-
-header h1 {
-  font-size: 18px;
-  margin: 0;
-  font-weight: 600;
-}
-
-main {
-  padding: 16px;
-  padding-bottom: 90px;
-}
-
-h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-p {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.card {
-  background: var(--card);
-  padding: 14px;
-  margin-bottom: 12px;
-  border-radius: 16px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-  border-left: 5px solid var(--pink);
-  transition: transform 0.2s ease;
-}
-
-.card:nth-child(2) {
-  border-left-color: var(--orange);
-}
-
-.card:nth-child(3) {
-  border-left-color: var(--blue);
-}
-
-.card:hover {
-  transform: translateY(-2px);
-}
-
-.button {
-  display: inline-block;
-  padding: 10px 16px;
-  background: linear-gradient(135deg, var(--pink), var(--blue));
-  color: white;
-  border-radius: 10px;
-  text-decoration: none;
-  margin-top: 12px;
-  font-size: 14px;
-}
-
-nav {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: white;
-  display: flex;
-  justify-content: space-around;
-  padding: 16px 0;
-  box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-
-nav button {
-  background: none;
-  border: none;
-  font-size: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--muted);
-}
-
-nav button span {
-  font-size: 20px;
-}
-
-.active {
-  color: var(--pink);
-  font-weight: 600;
-}
-
-.disabled {
-  opacity: 0.4;
-}
-
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACCS — Gestão e Prestação de Contas para o Terceiro Setor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
 </head>
-<body><header>
-  <!-- Substitua pelo caminho da sua logo -->
-  <img src="logo.png" alt="Logo ACCS" />
-  <h1>ACCS - Terceiro Setor</h1>
-</header><main id="content"></main><nav>
-  <button onclick="setPage('home')" id="btn-home">
-    <span>🏠</span>
-    Início
-  </button>
-  <button onclick="setPage('sobre')" id="btn-sobre">
-    <span>ℹ️</span>
-    Sobre
-  </button>
-  <button onclick="setPage('edital')" id="btn-edital">
-    <span>📄</span>
-    Edital
-  </button>
-</nav><script>
-  function setActive(page) {
-    document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-    const activeBtn = document.getElementById('btn-' + page);
-    if (activeBtn) activeBtn.classList.add('active');
-  }
 
-  function setPage(page) {
-    const content = document.getElementById('content');
+<body>
 
-    if (page === 'home') {
-      content.innerHTML = `
-        <h2>Bem-vindo 👋</h2>
-        <p>Plataforma de apoio à gestão e prestação de contas no terceiro setor.</p>
+  <!-- ══ NAV ══ -->
+  <nav>
+    <a href="#inicio" class="nav-logo">
+      <img src="./logo.png" alt="Logo ACCS">
+      <div class="nav-logo-text">
+        <strong>ACCS</strong>
+        <span>Gestão · Terceiro Setor</span>
+      </div>
+    </a>
 
-        <div class="card">
-          <strong>📊 Prestação de Contas</strong>
-          <p>Mais transparência e confiança institucional.</p>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre a ACCS</a></li>
+      <li><a href="#editais">Editais</a></li>
+      <li><a href="#publicacoes">Publicações</a></li>
+      <li><a href="#editais" class="nav-pill">Saiba Mais</a></li>
+    </ul>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div class="nav-drawer" id="navDrawer">
+    <a href="#sobre" onclick="closeDrawer()">Sobre a ACCS</a>
+    <a href="#editais" onclick="closeDrawer()">Editais</a>
+    <a href="#publicacoes" onclick="closeDrawer()">Publicações</a>
+    <a href="#editais" class="btn-g" onclick="closeDrawer()">Saiba Mais</a>
+  </div>
+
+  <div class="grad-bar"></div>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- Left -->
+        <div>
+          <div class="hero-badge">
+            <span class="hdot"></span>
+            Ação Curricular em Comunidade e em Sociedade
+          </div>
+          <h1 class="ht">
+            Estudantes que<br>
+            <span class="hl">transformam</span><br>
+            o Terceiro Setor
+          </h1>
+          <p class="hdesc">
+            A <strong>ACCS Gestão e Prestação de Contas para Organizações do Terceiro Setor</strong> é um componente curricular de extensão universitária que conecta estudantes a entidades sociais, promovendo aprendizado real com impacto comunitário.
+          </p>
+          <div class="hbtns">
+            <a href="#editais" class="btn-g">Ver Editais ↓</a>
+            <a href="#sobre" class="btn-outline">Conhecer a ACCS</a>
+          </div>
+          <div class="hstats">
+            <div>
+              <div class="sn">ACCS</div>
+              <div class="sl">Componente Curricular</div>
+            </div>
+            <div>
+              <div class="sn">OSC</div>
+              <div class="sl">Organizações Atendidas</div>
+            </div>
+            <div>
+              <div class="sn">100%</div>
+              <div class="sl">Prático e Voluntário</div>
+            </div>
+          </div>
         </div>
 
-        <div class="card">
-          <strong>💰 Gestão Financeira</strong>
-          <p>Controle eficiente de recursos e relatórios.</p>
+        <!-- Right: card -->
+        <div class="hero-card fade-in">
+          <img src="./logo.png" alt="ACCS">
+          <h3>ACCS Gestão e Prestação de Contas</h3>
+          <p>Componente curricular que une universidade e comunidade através da gestão social responsável.</p>
+          <div class="htags">
+            <span class="htag">Extensão Universitária</span>
+            <span class="htag">Serviço Voluntário</span>
+            <span class="htag">Impacto Social</span>
+          </div>
         </div>
-      `;
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SOBRE ══ -->
+  <section id="sobre">
+    <div class="container">
+      <div class="sobre-grid">
+
+        <!-- Left -->
+        <div>
+          <div class="sobre-header">
+            <span class="sec-label">O que é a ACCS?</span>
+            <h2 class="sec-title">Aprender fazendo,<br>transformar servindo</h2>
+            <p class="sec-desc">
+              A <strong>ACCS — Ação Curricular em Comunidade e em Sociedade</strong> integra formação acadêmica e serviço à sociedade. Estudantes desenvolvem competências em <strong>gestão contábil, financeira e prestação de contas</strong> ao apoiar, voluntariamente, organizações do Terceiro Setor.
+            </p>
+          </div>
+          <div class="sobre-cards">
+            <div class="sc fade-in">
+              <div class="sci i1">🎓</div>
+              <div>
+                <div class="sc-t">Formação Prática</div>
+                <div class="sc-d">Aplicação de conhecimentos acadêmicos em gestão real de organizações sociais.</div>
+              </div>
+            </div>
+            <div class="sc fade-in">
+              <div class="sci i2">🤝</div>
+              <div>
+                <div class="sc-t">Serviço Voluntário</div>
+                <div class="sc-d">Atendimento gratuito a entidades que precisam de apoio em gestão e prestação de contas.</div>
+              </div>
+            </div>
+            <div class="sc fade-in">
+              <div class="sci i3">📢</div>
+              <div>
+                <div class="sc-t">Produção de Conhecimento</div>
+                <div class="sc-d">Artigos e publicações sobre temas do Terceiro Setor produzidos pelos estudantes.</div>
+              </div>
+            </div>
+            <div class="sc fade-in">
+              <div class="sci i4">🌍</div>
+              <div>
+                <div class="sc-t">Impacto Comunitário</div>
+                <div class="sc-d">Fortalecimento de organizações sociais e contribuição ao desenvolvimento das comunidades.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: pills only -->
+        <div class="fade-in">
+          <div class="pills-box">
+            <div class="pills-title">Temas Trabalhados na ACCS</div>
+            <div class="pills">
+              <span class="pill">Contabilidade Social</span>
+              <span class="pill">Prestação de Contas</span>
+              <span class="pill">Marco Regulatório</span>
+              <span class="pill">OSCIP / OS</span>
+              <span class="pill">CEBAS</span>
+              <span class="pill">Captação de Recursos</span>
+              <span class="pill">Governança de OSCs</span>
+              <span class="pill">TRANSFEREGOV</span>
+              <span class="pill">Lei de Fomento</span>
+              <span class="pill">Transparência</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ EDITAIS ══ -->
+  <section id="editais">
+    <div class="container">
+      <div class="section-header">
+        <span class="sec-label">Chamadas Institucionais</span>
+        <h2 class="sec-title">Editais de Atendimento</h2>
+        <p class="sec-desc">Chamamentos públicos destinados a organizações do Terceiro Setor que buscam apoio técnico voluntário no âmbito da ACCS.</p>
+      </div>
+      <div class="empty-state fade-in">
+        <span class="empty-icon">📋</span>
+        <div class="empty-title">Editais em breve</div>
+        <p class="empty-desc">Os editais institucionais serão publicados em breve. Acompanhe esta página para ficar por dentro das chamadas abertas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PUBLICAÇÕES ══ -->
+  <section id="publicacoes">
+    <div class="container">
+      <div class="section-header">
+        <span class="sec-label">Produção Acadêmica</span>
+        <h2 class="sec-title">Publicações dos Estudantes</h2>
+        <p class="sec-desc">Artigos, reflexões e análises sobre o Terceiro Setor produzidos pelos estudantes ao longo do componente curricular.</p>
+      </div>
+      <div class="empty-state fade-in">
+        <span class="empty-icon">🛠️</span>
+        <div class="empty-title">Publicações em breve</div>
+        <p class="empty-desc">As publicações dos estudantes estarão disponíveis em breve. O espaço receberá artigos, relatos de experiência e análises produzidas ao longo da ACCS.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="footer-inner">
+      <a href="#inicio" class="flogo">
+        <img src="./logo.png" alt="ACCS">
+        <div class="flogo-text">
+          <strong>ACCS</strong>
+          <span>Gestão · Terceiro Setor</span>
+        </div>
+      </a>
+      <ul class="fnav">
+        <li><a href="#sobre">Sobre a ACCS</a></li>
+        <li><a href="#editais">Editais</a></li>
+        <li><a href="#publicacoes">Publicações</a></li>
+      </ul>
+    </div>
+    <div class="fbot">
+      <p class="fcopy">© 2026 ACCS Gestão e Prestação de Contas para Organizações do Terceiro Setor — Componente Curricular de Extensão Universitária.</p>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Scroll animations ── */
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+    /* ── Mobile nav ── */
+    const toggle = document.getElementById('navToggle');
+    const drawer = document.getElementById('navDrawer');
+
+    toggle.addEventListener('click', () => {
+      const open = drawer.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+    });
+
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      toggle.classList.remove('open');
     }
 
-    if (page === 'sobre') {
-      content.innerHTML = `
-        <h2>Sobre</h2>
-        <p>
-          A ACCS tem como objetivo fortalecer a gestão e a prestação de contas no terceiro setor, promovendo transparência e impacto social.
-        </p>
-      `;
-    }
+    /* Close drawer on outside click */
+    document.addEventListener('click', e => {
+      if (!toggle.contains(e.target) && !drawer.contains(e.target)) {
+        closeDrawer();
+      }
+    });
+  </script>
+</body>
 
-    if (page === 'edital') {
-      content.innerHTML = `
-        <h2>Edital</h2>
-        <p>Confira os editais disponíveis e participe.</p>
-        <a href="#" class="button">Baixar Edital</a>
-      `;
-    }
-
-    setActive(page);
-  }
-
-  setPage('home');
-</script></body>
 </html>

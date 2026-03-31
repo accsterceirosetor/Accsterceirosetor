@@ -751,6 +751,7 @@ footer {
 
 .fnav {
   display: flex;
+  align-items: center;
   gap: 24px;
   flex-wrap: wrap;
   list-style: none;
@@ -776,7 +777,202 @@ footer {
 .fcopy {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.28);
-  text-align: center;
+}
+
+/* ══ HERO INSTAGRAM (mobile only) ══ */
+.btn-ig-mobile {
+  display: none;
+  /* hidden on desktop */
+}
+
+/* ══ FOOTER INSTAGRAM ══ */
+.fig-link {
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.fig-link:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ══ EDITAL CARD ══ */
+.edital-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-m);
+  overflow: hidden;
+  max-width: 780px;
+}
+
+.edital-card-top {
+  height: 5px;
+  background: var(--grad);
+}
+
+.edital-card-body {
+  padding: 36px 36px 28px;
+}
+
+.edital-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.edital-num-tag {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.edital-status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #eafaf5;
+  border: 1px solid #a7e8d4;
+  color: #0e7a5a;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 11px;
+  letter-spacing: 0.5px;
+}
+
+.edital-status-tag::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #15a98e;
+  display: block;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.edital-card-title {
+  font-family: "Fraunces", serif;
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.edital-card-desc {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.75;
+  margin-bottom: 28px;
+}
+
+.edital-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 28px;
+  padding: 20px;
+  background: var(--bg2);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.edital-info-item {
+}
+
+.edital-info-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.edital-info-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.edital-card-footer {
+  padding: 20px 36px 28px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn-edital-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: var(--grad);
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(224, 50, 106, 0.24);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.btn-edital-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(224, 50, 106, 0.34);
+}
+
+.btn-edital-sec {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1.5px solid var(--border2);
+  color: var(--text2);
+  padding: 12px 22px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  background: white;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.btn-edital-sec:hover {
+  border-color: var(--pink);
+  color: var(--pink);
+  box-shadow: 0 2px 10px rgba(224, 50, 106, 0.1);
 }
 
 /* ══ FADE-IN ══ */
@@ -807,6 +1003,21 @@ footer {
 
 /* ══ RESPONSIVE — 768px ══ */
 @media (max-width: 768px) {
+  /* Edital card */
+  .edital-card-body {
+    padding: 24px 20px 20px;
+  }
+
+  .edital-card-footer {
+    padding: 16px 20px 24px;
+  }
+
+  .edital-info-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 16px;
+  }
+
   /* Nav */
   .nav-links {
     display: none;
@@ -814,6 +1025,32 @@ footer {
 
   .nav-toggle {
     display: flex;
+  }
+
+  /* Instagram button in hero */
+  .btn-ig-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border: 1.5px solid var(--border2);
+    color: var(--text2);
+    padding: 13px 22px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 44px;
+    text-decoration: none;
+    background: white;
+    width: auto;
+    transition:
+      border-color 0.2s,
+      color 0.2s;
+  }
+
+  .btn-ig-mobile:hover {
+    border-color: var(--pink);
+    color: var(--pink);
   }
 
   /* Hero */
@@ -877,6 +1114,11 @@ footer {
     width: 100%;
   }
 
+  /* Instagram button: full width on small mobile only */
+  .btn-ig-mobile {
+    width: 100%;
+  }
+
   h1.ht {
     font-size: 32px;
   }
@@ -912,5 +1154,20 @@ footer {
 
   .fnav {
     gap: 14px;
+  }
+
+  /* Edital card mobile */
+  .edital-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-edital-primary,
+  .btn-edital-sec {
+    width: 100%;
+  }
+
+  .edital-info-grid {
+    grid-template-columns: 1fr;
   }
 }

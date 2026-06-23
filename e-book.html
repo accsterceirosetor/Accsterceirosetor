@@ -65,177 +65,95 @@
     }
 
     /* ════ NAV ════ */
-    /* ══ NAV (identical to main site) ══ */
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    height: 68px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 5%;
-    background: rgba(255, 255, 255, .96);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 1px 6px rgba(26, 26, 46, .05);
-}
+    nav[aria-label="Navegação principal"] {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
 
-.nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    flex-shrink: 0;
-}
+    .nav-logo {
+      display: flex; align-items: center; gap: .65rem;
+      text-decoration: none; color: var(--text1);
+    }
+    .nav-logo img {
+      width: 36px; height: 36px;
+      border-radius: 8px; object-fit: cover;
+    }
+    .nav-logo-text {
+      display: flex; flex-direction: column; line-height: 1.2;
+    }
+    .nav-logo-text strong {
+      font-size: .95rem; font-weight: 800; color: var(--brand);
+    }
+    .nav-logo-text span {
+      font-size: .72rem; color: var(--muted);
+    }
 
-.nav-logo img {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    object-fit: contain;
-    box-shadow: var(--shadow-s);
-}
+    .nav-links {
+      display: flex; align-items: center;
+      gap: 1.5rem; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--muted);
+      font-size: .875rem; font-weight: 500;
+      transition: color .2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--brand); }
 
-.nav-logo-text {
-    line-height: 1.25;
-}
+    .nav-pill {
+      background: var(--brand) !important;
+      color: #fff !important;
+      padding: .35rem .85rem !important;
+      border-radius: 999px !important;
+      font-size: .8rem !important;
+      font-weight: 600 !important;
+      transition: background .2s !important;
+    }
+    .nav-pill:hover {
+      background: var(--brand2) !important;
+      color: #fff !important;
+    }
 
-.nav-logo-text strong {
-    display: block;
-    font-size: 14px;
-    font-weight: 800;
-    background: var(--grad);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+    .nav-toggle {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-toggle span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text1); border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-.nav-logo-text span {
-    font-size: 10px;
-    color: var(--muted);
-    font-weight: 500;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    list-style: none;
-}
-
-.nav-links a {
-    color: var(--text2);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    transition: color 0.2s;
-}
-
-.nav-links a:hover {
-    color: var(--text);
-}
-
-.nav-links a.active {
-    color: var(--pink);
-}
-
-.nav-pill {
-    background: var(--grad) !important;
-    color: white !important;
-    -webkit-text-fill-color: white !important;
-    padding: 8px 18px;
-    border-radius: 100px;
-    font-weight: 700 !important;
-    box-shadow: 0 3px 14px rgba(224, 50, 106, .24);
-    transition: box-shadow 0.2s, transform 0.2s !important;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.nav-pill:hover {
-    box-shadow: 0 5px 18px rgba(224, 50, 106, .34) !important;
-    transform: translateY(-1px);
-    color: white !important;
-}
-
-/* Hamburger */
-.nav-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-}
-
-.nav-toggle span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--text);
-    border-radius: 2px;
-    transition: transform 0.25s, opacity 0.25s;
-}
-
-.nav-toggle.open span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-}
-
-.nav-toggle.open span:nth-child(2) {
-    opacity: 0;
-}
-
-.nav-toggle.open span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-}
-
-.nav-drawer {
-    display: none;
-    position: fixed;
-    top: 71px;
-    left: 0;
-    right: 0;
-    z-index: 998;
-    background: rgba(255, 255, 255, .98);
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 8px 24px rgba(26, 26, 46, .09);
-    padding: 20px 5%;
-}
-
-.nav-drawer.open {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.nav-drawer a {
-    color: var(--text2);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    display: block;
-    transition: color 0.2s;
-}
-
-.nav-drawer a:last-child {
-    border-bottom: none;
-}
-
-.nav-drawer a:hover {
-    color: var(--pink);
-}
-
-.nav-drawer .nav-pill {
-    margin-top: 10px;
-    width: 100%;
-    justify-content: center;
-}
+    .nav-drawer {
+      display: none; flex-direction: column; gap: .5rem;
+      position: fixed; top: 68px; left: 0; right: 0; z-index: 99;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem 1.5rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      text-decoration: none; color: var(--text2);
+      font-size: .95rem; font-weight: 500;
+      padding: .4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-drawer a:last-child { border-bottom: none; }
 
     /* ════ PAGE HERO ════ */
     .page-hero {
@@ -566,7 +484,7 @@ nav {
       /* Nav */
       .nav-links  { display: none; }
       .nav-toggle { display: flex; }
-      nav { padding: 0 1.25rem; }
+      nav[aria-label="Navegação principal"] { padding: 0 1.25rem; }
 
       /* Hero */
       .page-hero           { padding: 2.5rem 1.25rem 2rem; }
@@ -635,32 +553,35 @@ nav {
 
   <!-- ══ NAV ══ -->
   <nav aria-label="Navegação principal">
-    <a href="/" class="nav-logo">
-      <img src="/logo.png" alt="Logo ACCS UFBA — Gestão e Prestação de Contas para o Terceiro Setor">
-      <div class="nav-logo-text">
-        <strong>ACCS</strong>
-        <span>Gestão · Terceiro Setor</span>
-      </div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="/#sobre">Sobre a ACCS</a></li>
-      <li><a href="/#editais">Editais</a></li>
-      <li><a href="/#publicacoes" class="active">Publicações</a></li>
-      <li><a href="/historia">Nossa História</a></li>
-      <li>
-        <a href="https://www.instagram.com/accs.fccf72" target="_blank" rel="noopener noreferrer" class="nav-pill" style="display:inline-flex;align-items:center;gap:6px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <circle cx="12" cy="12" r="4"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-          </svg>
-          Instagram
-        </a>
-      </li>
-    </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/logo.png" alt="Logo ACCS UFBA — Gestão e Prestação de Contas para o Terceiro Setor">
+        <div class="nav-logo-text">
+          <strong>ACCS</strong>
+          <span>Gestão · Terceiro Setor</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#sobre">Sobre a ACCS</a></li>
+        <li><a href="/#editais">Editais</a></li>
+        <li><a href="/#publicacoes" class="active">Publicações</a></li>
+        <li><a href="/historia">Nossa História</a></li>
+        <li>
+          <a href="https://www.instagram.com/accs.fccf72" target="_blank" rel="noopener noreferrer"
+             class="nav-pill" style="display:inline-flex;align-items:center;gap:6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+            Instagram
+          </a>
+        </li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- Mobile drawer -->
@@ -671,7 +592,7 @@ nav {
     <a href="/historia"     onclick="closeDrawer()">Nossa História</a>
     <a href="https://www.instagram.com/accs.fccf72" target="_blank" rel="noopener noreferrer"
        class="nav-pill" onclick="closeDrawer()"
-       style="display:inline-flex;align-items:center;gap:6px;justify-content:center;margin-top:10px;">
+       style="display:inline-flex;align-items:center;gap:6px;justify-content:center;margin-top:8px;">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
         <circle cx="12" cy="12" r="4"/>
@@ -687,6 +608,7 @@ nav {
   <!-- ══ PAGE HERO ══ -->
   <header class="page-hero">
     <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Início</a>
         <span>›</span>
         <a href="/#publicacoes">Publicações</a>
@@ -717,8 +639,11 @@ nav {
         </div>
       </div>
       <div class="hero-actions">
-        <a href="./Ebook.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        <a href="./e-book.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
           ↓ Acessar E-book
+        </a>
+        <a href="./e-book.html" download="E-book Contabilidade do Terceiro Setor para Leigos" class="btn btn-outline">
+          ← Todas as Publicações
         </a>
       </div>
     </div>

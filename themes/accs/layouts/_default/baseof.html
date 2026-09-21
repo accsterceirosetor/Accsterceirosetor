@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ══ SEO: Title & Description ══ -->
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+<meta name="description" content="A ACCS Gestão e Prestação de Contas é uma Ação Curricular em Comunidade e Sociedade da UFBA que conecta estudantes universitários a ONGs, associações e fundações de Salvador e Lauro de Freitas, oferecendo apoio gratuito em gestão, contabilidade e prestação de contas.">
+<meta name="keywords" content="ACCS, terceiro setor, gestão ONGs, prestação de contas, UFBA, extensão universitária, OSC, organizações sem fins lucrativos, Salvador, Bahia, contabilidade social, marco regulatório, captação de recursos, voluntariado universitário">
+<meta name="author" content="ACCS UFBA — Gestão e Prestação de Contas para o Terceiro Setor">
+<meta name="robots" content="index, follow">
+<meta name="language" content="Portuguese">
+<link rel="canonical" href="{{ .Permalink }}">
+
+<!-- ══ SEO: Open Graph (Facebook, WhatsApp, LinkedIn) ══ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="Componente curricular de extensão da UFBA que conecta estudantes universitários a ONGs e entidades sociais de Salvador, oferecendo apoio gratuito em gestão, contabilidade e prestação de contas.">
+<meta property="og:image" content="{{ "og-image.jpg" | relURL }}">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="{{ site.Title }}">
+
+<!-- ══ SEO: Twitter Card ══ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description" content="Extensão universitária da UFBA: estudantes apoiam ONGs e entidades sociais de Salvador com gestão e prestação de contas gratuita.">
+<meta name="twitter:image" content="{{ "og-image.jpg" | relURL }}">
+
+<!-- ══ SEO: Structured Data (JSON-LD) ══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "ACCS Gestão e Prestação de Contas para Organizações do Terceiro Setor",
+  "alternateName": "ACCS UFBA Terceiro Setor",
+  "description": "Ação Curricular em Comunidade e Sociedade da UFBA que oferece apoio voluntário gratuito em gestão contábil, financeira e prestação de contas a organizações do Terceiro Setor de Salvador e Lauro de Freitas.",
+  "url": "{{ site.BaseURL }}",
+  "logo": "{{ "logo.png" | relURL }}",
+  "sameAs": ["{{ site.Params.instagram }}"],
+  "parentOrganization": {
+    "@type": "CollegeOrUniversity",
+    "name": "Universidade Federal da Bahia",
+    "alternateName": "UFBA",
+    "url": "https://www.ufba.br"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Vale do Canela",
+    "addressLocality": "Salvador",
+    "addressRegion": "BA",
+    "addressCountry": "BR"
+  },
+  "areaServed": ["Salvador", "Lauro de Freitas", "Bahia"],
+  "knowsAbout": [
+    "Gestão de ONGs",
+    "Prestação de Contas",
+    "Terceiro Setor",
+    "Contabilidade Social",
+    "Marco Regulatório das OSCs",
+    "CEBAS",
+    "Captação de Recursos"
+  ]
+}
+</script>
+
+<!-- ══ Performance ══ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ "styles/style.css" | relURL }}">
+{{ block "styles" . }}{{ end }}
+</head>
+<body>
+
+{{ partial "nav.html" . }}
+
+<div class="grad-bar"></div>
+
+<main>
+{{ block "main" . }}{{ end }}
+</main>
+
+{{ partial "footer.html" . }}
+
+<script>
+/* ── Scroll animations ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+/* ── Mobile nav ── */
+const toggle = document.getElementById('navToggle');
+const drawer = document.getElementById('navDrawer');
+
+toggle.addEventListener('click', () => {
+  const open = drawer.classList.toggle('open');
+  toggle.classList.toggle('open', open);
+});
+
+function closeDrawer() {
+  drawer.classList.remove('open');
+  toggle.classList.remove('open');
+}
+
+/* Close drawer on outside click */
+document.addEventListener('click', e => {
+  if (!toggle.contains(e.target) && !drawer.contains(e.target)) {
+    closeDrawer();
+  }
+});
+</script>
+</body>
+</html>

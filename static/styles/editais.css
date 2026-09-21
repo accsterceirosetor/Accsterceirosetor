@@ -1,0 +1,116 @@
+/* ══ EDITAIS — additive styles (home page) ══ */
+.edital-card-title a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color .2s;
+}
+.edital-card-title a:hover {
+  color: var(--pink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.section-foot {
+  margin-top: 28px;
+}
+.section-foot-link {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .2s;
+}
+.section-foot-link:hover { color: var(--pink); }
+
+/* Responsive polish: single column for the info grid on narrow screens */
+@media (max-width: 520px) {
+  .edital-info-grid { grid-template-columns: 1fr; }
+}
+
+/* ══ EDITAIS — listing & detail pages ══ */
+.page {
+  padding-top: 104px;
+  padding-bottom: 72px;
+}
+
+.edital-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 8px;
+}
+
+.edital-date-range {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text2);
+}
+
+.edital-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+/* Edital detail prose */
+.edital-prose {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text2);
+  max-width: 780px;
+  margin-top: 28px;
+}
+.edital-prose h2,
+.edital-prose h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  color: var(--text);
+}
+.edital-prose h2 {
+  font-size: 26px;
+  margin: 36px 0 14px;
+}
+.edital-prose h3 {
+  font-size: 20px;
+  margin: 28px 0 12px;
+}
+.edital-prose p { margin-bottom: 18px; }
+.edital-prose ul,
+.edital-prose ol { margin: 0 0 18px; padding-left: 24px; }
+.edital-prose li { margin-bottom: 6px; }
+.edital-prose strong { color: var(--text); }
+.edital-prose a {
+  color: var(--pink);
+  text-decoration-color: rgba(224,50,106,.35);
+  text-underline-offset: 2px;
+}
+.edital-prose blockquote {
+  border-left: 3px solid var(--pink);
+  background: var(--bg2);
+  padding: 14px 18px;
+  margin: 24px 0;
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+}
+.edital-prose code {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: .1em .35em;
+  font-size: .9em;
+}
+
+/* Narrow screens: stack the edital action buttons */
+@media (max-width: 480px) {
+  .edital-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .edital-actions .btn-edital-primary,
+  .edital-actions .btn-edital-sec { width: 100%; }
+}

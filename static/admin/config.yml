@@ -1,0 +1,59 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: pt
+
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "publicacoes"
+    label: "Publicações"
+    folder: "content/publicacoes"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Data", name: "date", widget: "datetime" }
+      - { label: "Autor(a)", name: "author", widget: "string" }
+      - {
+          label: "Temas",
+          name: "temas",
+          widget: "select",
+          multiple: true,
+          create: true,
+          options:
+            [
+              "Contabilidade Social",
+              "Prestação de Contas",
+              "Marco Regulatório",
+              "OSCIP / OS",
+              "CEBAS",
+              "Captação de Recursos",
+              "Governança de OSCs",
+              "TRANSFEREGOV",
+              "Lei de Fomento",
+              "Transparência",
+            ],
+        }
+      - { label: "Imagem de capa (opcional)", name: "capa", widget: "image", required: false }
+      - { label: "Arquivo (opcional)", name: "arquivo", widget: "file", required: false }
+      - { label: "Destaque na home", name: "featured", widget: "boolean", default: false }
+      - { label: "Conteúdo", name: "body", widget: "markdown" }
+
+  - name: "editais"
+    label: "Editais"
+    folder: "content/editais"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Número", name: "numero", widget: "string" }
+      - { label: "Início das inscrições", name: "inicio", widget: "datetime" }
+      - { label: "Fim das inscrições", name: "fim", widget: "datetime" }
+      - { label: "Local", name: "local", widget: "string" }
+      - { label: "Vagas", name: "vagas", widget: "string" }
+      - { label: "Público-alvo", name: "publico_alvo", widget: "string" }
+      - { label: "PDF do edital", name: "pdf", widget: "file" }
+      - { label: "Descrição", name: "body", widget: "markdown" }

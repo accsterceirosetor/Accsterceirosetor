@@ -1,0 +1,32 @@
+{{ define "styles" }}
+<link rel="stylesheet" href="{{ "styles/publicacoes.css" | relURL }}">
+{{ end }}
+
+{{ define "main" }}
+<article class="container post">
+  {{ if .Params.capa }}
+  <img class="post-capa" src="{{ .Params.capa | relURL }}" alt="{{ .Title }}">
+  {{ end }}
+
+  <h1 class="post-title">{{ .Title }}</h1>
+
+  <div class="post-meta">
+    <span>{{ .Date | time.Format "02/01/2006" }}</span>
+    {{ with .Params.author }}<span>· {{ . }}</span>{{ end }}
+    {{ with .Params.temas }}
+      {{ range . }}
+      <a class="pub-card-tag" href="{{ . | urlize | printf "/temas/%s/" }}">{{ . }}</a>
+      {{ end }}
+    {{ end }}
+  </div>
+
+  {{ with .Params.arquivo }}
+  <a class="btn-edital-primary post-dl" href="{{ . }}" download="{{ . | path.Base }}" target="_blank" rel="noopener noreferrer">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Baixar arquivo
+  </a>
+  {{ end }}
+
+  <div class="prose">{{ .Content }}</div>
+</article>
+{{ end }}

@@ -1,0 +1,54 @@
+{{ define "styles" }}
+<link rel="stylesheet" href="{{ "styles/publicacoes.css" | relURL }}">
+{{ end }}
+
+{{ define "main" }}
+<div class="container page">
+  <div class="section-header">
+    <span class="sec-label">Produção Acadêmica</span>
+    <h1 class="sec-title">{{ .Title }}</h1>
+    <p class="sec-desc">{{ .Description }}</p>
+  </div>
+
+  {{ $termNames := slice }}
+  {{ range $term, $_ := site.Taxonomies.temas }}{{ $termNames = $termNames | append $term }}{{ end }}
+  {{ if gt (len $termNames) 0 }}
+  <div class="filter-row">
+    {{ range sort $termNames }}
+    {{ with site.GetPage (printf "/temas/%s" (. | urlize)) }}
+    <a class="filter-pill" href="{{ .RelPermalink }}">{{ .Title }}</a>
+    {{ end }}
+    {{ end }}
+  </div>
+  {{ end }}
+
+  {{ $pubs := where .Site.RegularPages "Section" "publicacoes" }}
+  {{ $pag := .Paginate $pubs }}
+
+  {{ if gt (len $pag.Pages) 0 }}
+  <div class="pub-grid">
+    {{ range $pag.Pages }}
+    {{ partial "publicacao-card.html" . }}
+    {{ end }}
+  </div>
+  {{ else }}
+  <div class="empty-state fade-in">
+    <span class="empty-icon">🛠️</span>
+    <div class="empty-title">Publicações em breve</div>
+    <p class="empty-desc">As publicações dos estudantes estarão disponíveis em breve. O espaço receberá artigos, relatos de experiência e análises produzidas ao longo da ACCS.</p>
+  </div>
+  {{ end }}
+
+  {{ if gt .Paginator.TotalPages 1 }}
+  <nav class="pagination">
+    {{ if .Paginator.HasPrev }}
+    <a class="page-btn" href="{{ .Paginator.Prev.URL }}">← Anteriores</a>
+    {{ end }}
+    <span class="page-info">Página {{ .Paginator.PageNumber }} de {{ .Paginator.TotalPages }}</span>
+    {{ if .Paginator.HasNext }}
+    <a class="page-btn" href="{{ .Paginator.Next.URL }}">Próximas →</a>
+    {{ end }}
+  </nav>
+  {{ end }}
+</div>
+{{ end }}

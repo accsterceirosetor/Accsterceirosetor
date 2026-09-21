@@ -1,0 +1,32 @@
+{{ define "styles" }}
+<link rel="stylesheet" href="{{ "styles/editais.css" | relURL }}">
+{{ end }}
+
+{{ define "main" }}
+<div class="container page">
+  <div class="section-header">
+    <span class="sec-label">Chamadas Institucionais</span>
+    <h1 class="sec-title">{{ .Title }}</h1>
+    <p class="sec-desc">{{ .Description }}</p>
+  </div>
+
+  {{ $editais := slice }}
+  {{ range where .Site.RegularPages "Section" "editais" }}
+    {{ $editais = $editais | append (dict "page" . "ts" ((.Params.inicio | time.AsTime).Format "2006-01-02T15:04:05")) }}
+  {{ end }}
+  {{ $editais = sort $editais "ts" "desc" }}
+  {{ if gt (len $editais) 0 }}
+  <div class="edital-list">
+    {{ range $editais }}
+    {{ partial "edital-card.html" .page }}
+    {{ end }}
+  </div>
+  {{ else }}
+  <div class="empty-state fade-in">
+    <span class="empty-icon">🛠️</span>
+    <div class="empty-title">Nenhum edital disponível</div>
+    <p class="empty-desc">Os chamamentos institucionais estarão disponíveis aqui. Volte em breve.</p>
+  </div>
+  {{ end }}
+</div>
+{{ end }}

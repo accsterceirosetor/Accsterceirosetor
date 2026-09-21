@@ -1,0 +1,32 @@
+{{ $current := . }}
+<nav aria-label="Navegação principal">
+  {{ partial "logo.html" . }}
+
+  <ul class="nav-links">
+    {{ range .Site.Menus.main }}
+      {{ if .Params.external }}
+      <li>
+        <a href="{{ .URL }}" target="_blank" rel="noopener noreferrer" class="nav-pill" style="display:inline-flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>{{ .Name }}</a>
+      </li>
+      {{ else }}
+      <li>
+        <a href="{{ .URL }}"{{ if or ($current.IsMenuCurrent "main" .) (eq $current.RelPermalink .URL) }} class="active"{{ end }}>{{ .Name }}</a>
+      </li>
+      {{ end }}
+    {{ end }}
+  </ul>
+
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  {{ range .Site.Menus.main }}
+    {{ if .Params.external }}
+    <a href="{{ .URL }}" target="_blank" rel="noopener noreferrer" class="btn-g" onclick="closeDrawer()" style="display:inline-flex;align-items:center;gap:6px;justify-content:center;margin-top:10px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>{{ .Name }}</a>
+    {{ else }}
+    <a href="{{ .URL }}" onclick="closeDrawer()">{{ .Name }}</a>
+    {{ end }}
+  {{ end }}
+</div>

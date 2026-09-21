@@ -1,0 +1,31 @@
+{{ define "styles" }}
+<link rel="stylesheet" href="{{ "styles/publicacoes.css" | relURL }}">
+{{ end }}
+
+{{ define "main" }}
+<div class="container page">
+  <div class="section-header">
+    <span class="sec-label">Temas</span>
+    <h1 class="sec-title">Temas</h1>
+    <p class="sec-desc">Explore as publicações por área de conhecimento do Terceiro Setor.</p>
+  </div>
+
+  {{ $termNames := slice }}
+  {{ range $term, $_ := site.Taxonomies.temas }}{{ $termNames = $termNames | append $term }}{{ end }}
+  {{ if gt (len $termNames) 0 }}
+  <div class="filter-row">
+    {{ range sort $termNames }}
+    {{ with site.GetPage (printf "/temas/%s" (. | urlize)) }}
+    <a class="filter-pill" href="{{ .RelPermalink }}">{{ .Title }} <span class="filter-count">({{ len (index site.Taxonomies.temas (lower .Title)) }})</span></a>
+    {{ end }}
+    {{ end }}
+  </div>
+  {{ else }}
+  <div class="empty-state fade-in">
+    <span class="empty-icon">🛠️</span>
+    <div class="empty-title">Sem temas</div>
+    <p class="empty-desc">Nenhum tema foi registrado até o momento.</p>
+  </div>
+  {{ end }}
+</div>
+{{ end }}

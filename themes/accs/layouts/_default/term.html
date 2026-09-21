@@ -1,0 +1,31 @@
+{{ define "styles" }}
+<link rel="stylesheet" href="{{ "styles/publicacoes.css" | relURL }}">
+{{ end }}
+
+{{ define "main" }}
+<div class="container page">
+  <div class="section-header">
+    <span class="sec-label">Tema</span>
+    <h1 class="sec-title">{{ .Title }}</h1>
+    <p class="sec-desc">Publicações sobre "{{ .Title }}".</p>
+  </div>
+
+  {{ if .Pages }}
+  <div class="pub-grid">
+    {{ range .Pages }}
+    {{ partial "publicacao-card.html" . }}
+    {{ end }}
+  </div>
+  {{ else }}
+  <div class="empty-state fade-in">
+    <span class="empty-icon">🛠️</span>
+    <div class="empty-title">Sem publicações</div>
+    <p class="empty-desc">Ainda não há publicações sobre este tema.</p>
+  </div>
+  {{ end }}
+
+  <div class="term-footer">
+    <a class="btn-outline" href="{{ "/publicacoes/" | relURL }}">Ver todas</a>
+  </div>
+</div>
+{{ end }}

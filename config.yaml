@@ -1,0 +1,27 @@
+baseURL: "https://accsterceirosetor.netlify.app/"
+languageCode: "pt-br"
+title: "ACCS Gestão e Prestação de Contas para o Terceiro Setor | UFBA"
+theme: "accs"
+buildFuture: true
+pagination:
+  pagerSize: 9
+taxonomies:
+  temas: "temas"
+params:
+  instagram: "https://www.instagram.com/accs.fccf72"
+menu:
+  main:
+    - name: "Editais"
+      url: "/editais/"
+      weight: 10
+    - name: "Publicações"
+      url: "/publicacoes/"
+      weight: 20
+    - name: "Nossa História"
+      url: "/historia/"
+      weight: 30
+    - name: "Instagram"
+      url: "https://www.instagram.com/accs.fccf72"
+      weight: 40
+      params:
+        external: true

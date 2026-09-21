@@ -1,0 +1,23 @@
+{{ define "styles" }}
+<link rel="stylesheet" href="{{ "styles/publicacoes.css" | relURL }}">
+{{ end }}
+
+{{ define "main" }}
+<div class="container page">
+  <div class="section-header">
+    <h1 class="sec-title">{{ .Title }}</h1>
+    {{ with .Description }}<p class="sec-desc">{{ . }}</p>{{ end }}
+  </div>
+
+  {{ .Content }}
+
+  <ul class="simple-list">
+    {{ range .Pages }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <span class="simple-date">{{ .Date | time.Format "02/01/2006" }}</span>
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

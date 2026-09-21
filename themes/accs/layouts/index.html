@@ -1,0 +1,60 @@
+{{ define "styles" }}
+<link rel="stylesheet" href="{{ "styles/publicacoes.css" | relURL }}">
+<link rel="stylesheet" href="{{ "styles/editais.css" | relURL }}">
+{{ end }}
+
+{{ define "main" }}
+{{ partial "hero.html" . }}
+{{ partial "sobre.html" . }}
+
+<!-- ══ EDITAIS ══ -->
+<section id="editais" aria-label="Editais de Atendimento">
+  <div class="container">
+    <div class="section-header">
+      <span class="sec-label">Chamadas Institucionais</span>
+      <h2 class="sec-title">Editais de Atendimento</h2>
+      <p class="sec-desc">Chamamentos públicos destinados a organizações do Terceiro Setor que buscam apoio técnico voluntário no âmbito da ACCS.</p>
+    </div>
+
+    {{ $editais := where site.RegularPages "Section" "editais" }}
+    {{ with $editais }}
+      {{ $latest := index (sort $editais "Params.inicio" "desc") 0 }}
+      {{ partial "edital-card.html" $latest }}
+      {{ if gt (len $editais) 1 }}
+      <div class="section-foot">
+        <a class="section-foot-link" href="{{ "/editais/" | relURL }}">Ver todos os editais</a>
+      </div>
+      {{ end }}
+    {{ end }}
+  </div>
+</section>
+
+<!-- ══ PUBLICAÇÕES ══ -->
+<section id="publicacoes" aria-label="Publicações dos Estudantes">
+  <div class="container">
+    <div class="section-header">
+      <span class="sec-label">Produção Acadêmica</span>
+      <h2 class="sec-title">Publicações dos Estudantes</h2>
+      <p class="sec-desc">Artigos, reflexões e análises sobre o Terceiro Setor produzidos pelos estudantes ao longo do componente curricular.</p>
+    </div>
+
+    {{ $destaques := first 3 (where (where site.RegularPages "Section" "publicacoes") "Params.featured" true) }}
+    {{ if $destaques }}
+      <div class="pub-grid">
+        {{ range $destaques }}
+          {{ partial "publicacao-card.html" . }}
+        {{ end }}
+      </div>
+      <div class="section-foot">
+        <a class="section-foot-link" href="{{ "/publicacoes/" | relURL }}">Ver todas as publicações</a>
+      </div>
+    {{ else }}
+      <div class="empty-state fade-in">
+        <span class="empty-icon">🛠️</span>
+        <div class="empty-title">Publicações em breve</div>
+        <p class="empty-desc">As publicações dos estudantes estarão disponíveis em breve. O espaço receberá artigos, relatos de experiência e análises produzidas ao longo da ACCS.</p>
+      </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

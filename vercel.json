@@ -1,8 +1,0 @@
-{
-  "routes": [
-    { "src": "/historia", "dest": "/historia.html" },
-    { "src": "/sitemap", "dest": "/sitemap.xml" },
-    { "src": "/robots", "dest": "/robots.txt" },
-    { "src": "/Ebook", "dest": "/e-book.html" }
-  ]
-}

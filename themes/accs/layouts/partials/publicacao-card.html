@@ -1,0 +1,23 @@
+<article class="pub-card fade-in">
+  {{ if .Params.capa }}
+  <a class="pub-card-capa" href="{{ .RelPermalink }}"><img src="{{ .Params.capa | relURL }}" alt="{{ .Title }}" loading="lazy"></a>
+  {{ end }}
+  <div class="pub-card-body">
+    <a class="pub-card-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+    <div class="pub-card-meta">{{ .Date | time.Format "02/01/2006" }}{{ with .Params.author }} · {{ . }}{{ end }}</div>
+    {{ with .Params.temas }}
+    <div class="pub-card-tags">
+      {{ range . }}
+      <a class="pub-card-tag" href="{{ . | urlize | printf "/temas/%s/" }}">{{ . }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+    {{ with .Params.arquivo }}
+    <a class="pub-card-dl" href="{{ . }}" download>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Baixar
+    </a>
+    {{ end }}
+    <p class="pub-card-desc">{{ .Summary | plainify }}</p>
+  </div>
+</article>

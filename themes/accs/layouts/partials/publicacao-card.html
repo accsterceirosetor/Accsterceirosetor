@@ -18,6 +18,6 @@
       Baixar
     </a>
     {{ end }}
-    <p class="pub-card-desc">{{ .Summary | plainify }}</p>
+    <p class="pub-card-desc">{{ .Summary | plainify | truncate 160 }}</p>
   </div>
 </article>

@@ -90,8 +90,12 @@
 .pub-card-desc {
   font-size: 13.5px;
   color: var(--text2);
-  line-height: 1.6;
+  line-height: 1.5;
   margin-top: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* ══ LISTINGS & POST PAGES — additive ══ */

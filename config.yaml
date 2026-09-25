@@ -18,7 +18,7 @@ menu:
       url: "/publicacoes/"
       weight: 20
     - name: "Nossa História"
-      url: "/historia/"
+      url: "/historia.html"
       weight: 30
     - name: "Instagram"
       url: "https://www.instagram.com/accs.fccf72"

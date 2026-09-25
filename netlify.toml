@@ -11,6 +11,11 @@
   status = 301
 
 [[redirects]]
+  from = "/historia/"
+  to = "/historia.html"
+  status = 301
+
+[[redirects]]
   from = "/Ebook"
   to = "/publicacoes/e-book-contabilidade-do-terceiro-setor-para-leigos/"
   status = 301

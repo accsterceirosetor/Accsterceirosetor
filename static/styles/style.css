@@ -390,7 +390,7 @@ footer {
 .fnav a:hover { color: rgba(255,255,255,.85); }
 
 .fbot { max-width: 1160px; margin: 0 auto; }
-.fcopy { font-size: 12px; color: rgba(255,255,255,.28); }
+.fcopy { font-size: 12px; color: rgba(255,255,255,.28); text-align: center; }
 
 /* ══ HERO INSTAGRAM (mobile only) ══ */
 .btn-ig-mobile {
